@@ -1,0 +1,779 @@
+/* ==========================================================================
+   BLOCO 1: VARIÁVEIS E DESIGN SYSTEM
+   Cores principais (branco, azul, roxo) e alternância do modo escuro.
+   ========================================================================== */
+
+:root {
+   /* Cores no tema claro */
+   --cor-fundo: #e0f2fe;
+   /* Azul bem claro para o body */
+   --cor-fundo-cartao: #ffffff;
+   /* Fundo branco para os cartões destacarem */
+   --cor-texto: #1e293b;
+   --cor-texto-suave: #475569;
+   --cor-azul: #2563eb;
+   --cor-azul-escuro: #1d4ed8;
+   --cor-roxo: #6b21a8;
+   --cor-roxo-cabecalho: #581c87;
+   /* Roxo para cabeçalho e rodapé */
+   --cor-texto-cabecalho: #ffffff;
+   /* Texto branco no cabeçalho e rodapé */
+   --cor-roxo-claro: #ede9fe;
+   --cor-borda: #cbd5e1;
+
+   /* Tipografia */
+   --fonte-principal: Arial, sans-serif;
+
+   /* Espaçamentos e container */
+   --largura-maxima: 1100px;
+}
+
+/* Variáveis para o modo escuro */
+body.modo-escuro {
+   --cor-fundo: #0f172a;
+   --cor-fundo-cartao: #1e293b;
+   --cor-texto: #f8fafc;
+   --cor-texto-suave: #94a3b8;
+   --cor-azul: #38bdf8;
+   --cor-azul-escuro: #60a5fa;
+   --cor-roxo: #c084fc;
+   --cor-roxo-cabecalho: #3b0764;
+   --cor-texto-cabecalho: #ffffff;
+   --cor-roxo-claro: #2e264a;
+   --cor-borda: #334155;
+}
+
+/* ==========================================================================
+   BLOCO 2: REGRAS GERAIS E ESTRUTURA BASE
+   Reset simples, aplicação de fontes e container de largura fixa.
+   ========================================================================== */
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: var(--cor-fundo);
+   color: var(--cor-texto);
+   font-family: var(--fonte-principal);
+   font-size: 1rem;
+   line-height: 1.6;
+}
+
+/* Container para centralizar o conteúdo com espaçamento lateral seguro */
+.container {
+   width: 90%;
+   max-width: var(--largura-maxima);
+   margin-left: auto;
+   margin-right: auto;
+}
+
+/* Estilo padrão de links */
+a {
+   color: var(--cor-azul);
+   text-decoration: none;
+}
+
+/* ==========================================================================
+   BLOCO 3: CABEÇALHO E NAVEGAÇÃO
+   Estilos do menu fixo, logo e botão de alternância do tema.
+   ========================================================================== */
+
+.cabecalho {
+   position: sticky;
+   top: 0;
+   background-color: var(--cor-roxo-cabecalho);
+   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+   z-index: 100;
+}
+
+.cabecalho-conteudo {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1rem 0;
+}
+
+.logo {
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: var(--cor-texto-cabecalho);
+}
+
+.menu-navegacao {
+   display: flex;
+   list-style: none;
+   gap: 1.5rem;
+}
+
+.link-menu {
+   color: var(--cor-texto-cabecalho);
+   font-weight: 500;
+   padding: 0.5rem 0.75rem;
+}
+
+/* Bloco de saudação e relógio com data e hora */
+.bloco-saudacao {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 0.8rem;
+   color: var(--cor-texto-cabecalho);
+}
+
+.texto-saudacao {
+   font-weight: bold;
+}
+
+.texto-relogio {
+   opacity: 0.85;
+}
+
+/* Botão de alternar tema claro / escuro */
+.botao-tema {
+   background-color: rgba(255, 255, 255, 0.2);
+   color: var(--cor-texto-cabecalho);
+   border: 1px solid rgba(255, 255, 255, 0.4);
+   border-radius: 4px;
+   padding: 0.5rem 1rem;
+   font-size: 0.875rem;
+   font-family: inherit;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+/* Responsividade simples para celular no cabeçalho */
+@media (max-width: 600px) {
+   .cabecalho-conteudo {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+   }
+
+   .menu-navegacao {
+      gap: 1rem;
+   }
+}
+
+/* ==========================================================================
+   BLOCO 4: SEÇÃO HOME
+   Apresentação, botões de ação e grade de cartões de temas.
+   ========================================================================== */
+
+.secao-home {
+   padding: 4rem 0 2rem 0;
+}
+
+.destaque-home {
+   text-align: center;
+   margin-bottom: 3.5rem;
+}
+
+.titulo-principal {
+   font-size: 2.25rem;
+   color: var(--cor-azul);
+   margin-bottom: 1rem;
+   font-weight: bold;
+}
+
+.subtitulo-home {
+   font-size: 1.125rem;
+   color: var(--cor-texto-suave);
+   max-width: 600px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 2rem;
+}
+
+.acoes-home {
+   display: flex;
+   justify-content: center;
+   gap: 1rem;
+}
+
+.botao-primario {
+   background-color: var(--cor-azul);
+   color: #ffffff;
+   padding: 0.75rem 1.5rem;
+   border-radius: 4px;
+   font-weight: bold;
+   display: inline-block;
+}
+
+.botao-secundario {
+   background-color: transparent;
+   color: var(--cor-azul);
+   border: 1px solid var(--cor-azul);
+   padding: 0.75rem 1.5rem;
+   border-radius: 4px;
+   font-weight: bold;
+   display: inline-block;
+}
+
+/* Grade com os 6 temas de cultura pop */
+.grade-temas {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 1.5rem;
+}
+
+.cartao-tema {
+   background-color: var(--cor-fundo-cartao);
+   border: 1px solid var(--cor-borda);
+   border-radius: 8px;
+   padding: 1.75rem;
+}
+
+.titulo-cartao {
+   font-size: 1.25rem;
+   color: var(--cor-roxo);
+   margin-bottom: 0.75rem;
+}
+
+.descricao-cartao {
+   color: var(--cor-texto-suave);
+   font-size: 0.95rem;
+   line-height: 1.5;
+}
+
+/* Responsividade simples para celular na Home */
+@media (max-width: 768px) {
+   .grade-temas {
+      grid-template-columns: 1fr;
+   }
+
+   .acoes-home {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .titulo-principal {
+      font-size: 1.75rem;
+   }
+}
+
+/* ==========================================================================
+   BLOCO 5: SEÇÃO SOBRE
+   Foto, informações pessoais e lista de habilidades.
+   ========================================================================== */
+
+.secao-sobre {
+   padding: 4rem 0;
+   border-top: 1px solid var(--cor-borda);
+}
+
+.titulo-secao {
+   font-size: 1.75rem;
+   color: var(--cor-azul);
+   margin-bottom: 2.5rem;
+   text-align: center;
+   font-weight: bold;
+}
+
+.conteudo-sobre {
+   display: flex;
+   align-items: center;
+   gap: 3rem;
+}
+
+.sobre-imagem-bloco {
+   flex-shrink: 0;
+}
+
+.foto-perfil {
+   width: 220px;
+   height: 220px;
+   border-radius: 50%;
+   object-fit: cover;
+   border: 3px solid var(--cor-azul);
+   background-color: var(--cor-fundo-cartao);
+   display: block;
+}
+
+.sobre-texto-bloco {
+   flex: 1;
+}
+
+.sobre-nome {
+   font-size: 1.5rem;
+   color: var(--cor-roxo);
+   margin-bottom: 0.5rem;
+}
+
+.sobre-perfil {
+   color: var(--cor-azul);
+   font-weight: bold;
+   margin-bottom: 1rem;
+}
+
+.sobre-descricao {
+   color: var(--cor-texto-suave);
+   margin-bottom: 1.5rem;
+   line-height: 1.6;
+}
+
+.subtitulo-habilidades {
+   font-size: 1.1rem;
+   color: var(--cor-texto);
+   margin-bottom: 0.5rem;
+}
+
+.lista-habilidades {
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.75rem;
+}
+
+.lista-habilidades li {
+   background-color: var(--cor-fundo-cartao);
+   border: 1px solid var(--cor-borda);
+   padding: 0.4rem 0.8rem;
+   border-radius: 4px;
+   font-size: 0.9rem;
+   color: var(--cor-texto);
+}
+
+/* Responsividade simples para celular na seção Sobre */
+@media (max-width: 768px) {
+   .conteudo-sobre {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+   }
+
+   .lista-habilidades {
+      justify-content: center;
+   }
+}
+
+/* ==========================================================================
+   BLOCO 6: SEÇÃO CONTATO
+   Formulário de mensagem e painel lateral direito com botões GitHub e e-mail.
+   ========================================================================== */
+
+.secao-contato {
+   padding: 4rem 0;
+   border-top: 1px solid var(--cor-borda);
+}
+
+.conteudo-contato {
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   gap: 2.5rem;
+   align-items: start;
+}
+
+.formulario-contato {
+   background-color: var(--cor-fundo-cartao);
+   padding: 2rem;
+   border: 1px solid var(--cor-borda);
+   border-radius: 8px;
+}
+
+.campo-formulario {
+   margin-bottom: 1.25rem;
+}
+
+.rotulo-campo {
+   display: block;
+   margin-bottom: 0.5rem;
+   font-size: 0.9rem;
+   font-weight: bold;
+   color: var(--cor-texto);
+}
+
+.input-formulario,
+.textarea-formulario {
+   width: 100%;
+   padding: 0.75rem;
+   border: 1px solid var(--cor-borda);
+   border-radius: 4px;
+   background-color: var(--cor-fundo);
+   color: var(--cor-texto);
+   font-family: inherit;
+   font-size: 1rem;
+}
+
+.textarea-formulario {
+   resize: vertical;
+}
+
+.botao-enviar {
+   border: none;
+   cursor: pointer;
+   font-family: inherit;
+   font-size: 1rem;
+   width: 100%;
+}
+
+.mensagem-feedback {
+   margin-top: 1rem;
+   font-size: 0.9rem;
+   font-weight: bold;
+   text-align: center;
+}
+
+.mensagem-feedback.sucesso {
+   color: #16a34a;
+}
+
+.mensagem-feedback.erro {
+   color: #dc2626;
+}
+
+/* Painel lateral direito da aba contato */
+.painel-lateral-contato {
+   background-color: var(--cor-fundo-cartao);
+   padding: 2rem;
+   border: 1px solid var(--cor-borda);
+   border-radius: 8px;
+}
+
+.titulo-lateral-contato {
+   font-size: 1.25rem;
+   color: var(--cor-roxo);
+   margin-bottom: 0.75rem;
+}
+
+.descricao-lateral-contato {
+   font-size: 0.95rem;
+   color: var(--cor-texto-suave);
+   margin-bottom: 1.5rem;
+   line-height: 1.5;
+}
+
+.acoes-laterais-contato {
+   display: flex;
+   flex-direction: column;
+   gap: 0.75rem;
+}
+
+.botao-lateral {
+   background-color: var(--cor-roxo-claro);
+   color: var(--cor-roxo);
+   border: 1px solid var(--cor-roxo);
+   padding: 0.75rem 1rem;
+   border-radius: 4px;
+   font-weight: bold;
+   text-align: center;
+   display: block;
+}
+
+/* Responsividade simples para celular na seção Contato */
+@media (max-width: 768px) {
+   .conteudo-contato {
+      grid-template-columns: 1fr;
+   }
+}
+
+/* ==========================================================================
+   BLOCO 7: PÁGINA DE ANIMES
+   Estilos da grade de notícias e matérias de animes.
+   ========================================================================== */
+
+.secao-animes {
+   padding: 4rem 0 2rem 0;
+}
+
+.cabecalho-secao-animes {
+   text-align: center;
+   margin-bottom: 3.5rem;
+}
+
+.grade-materias {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 2rem;
+}
+
+.cartao-materia {
+   background-color: var(--cor-fundo-cartao);
+   border: 1px solid var(--cor-borda);
+   border-radius: 8px;
+   padding: 2rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.imagem-materia {
+   width: 100%;
+   height: 220px;
+   object-fit: cover;
+   border-radius: 6px;
+   margin-bottom: 1.25rem;
+}
+
+.etiqueta-categoria {
+   display: inline-block;
+   align-self: flex-start;
+   background-color: var(--cor-roxo-claro);
+   color: var(--cor-roxo);
+   font-size: 0.8rem;
+   font-weight: bold;
+   padding: 0.3rem 0.75rem;
+   border-radius: 4px;
+   margin-bottom: 1rem;
+}
+
+.titulo-materia {
+   font-size: 1.35rem;
+   color: var(--cor-azul-escuro);
+   margin-bottom: 0.85rem;
+   line-height: 1.4;
+}
+
+.resumo-materia {
+   color: var(--cor-texto-suave);
+   font-size: 0.95rem;
+   line-height: 1.6;
+}
+
+.cartao-link {
+   display: flex;
+   flex-direction: column;
+   color: inherit;
+   text-decoration: none;
+   height: 100%;
+}
+
+.cartao-link:hover .titulo-materia {
+   color: var(--cor-azul);
+}
+
+/* Responsividade simples para celular na grade de matérias */
+@media (max-width: 768px) {
+   .grade-materias {
+      grid-template-columns: 1fr;
+   }
+}
+
+/* ==========================================================================
+   BLOCO 8: PÁGINA DE LEITURA DA NOTÍCIA (NOTICIAS_ANIMES)
+   Estilos do detalhe da matéria, capa e recomendações aleatórias.
+   ========================================================================== */
+
+.secao-noticia-detalhe {
+   padding: 3rem 0;
+}
+
+.navegacao-voltar {
+   margin-bottom: 2rem;
+}
+
+.link-voltar {
+   display: inline-block;
+   background-color: var(--cor-roxo-claro);
+   color: var(--cor-roxo);
+   padding: 0.5rem 1rem;
+   border-radius: 4px;
+   font-weight: bold;
+}
+
+.cabecalho-noticia {
+   margin-bottom: 2rem;
+}
+
+.titulo-noticia-detalhe {
+   font-size: 2.2rem;
+   color: var(--cor-azul-escuro);
+   line-height: 1.3;
+   margin: 1rem 0 0.5rem 0;
+}
+
+.data-noticia {
+   color: var(--cor-texto-suave);
+   font-size: 0.9rem;
+}
+
+.noticia-capa-bloco {
+   margin-bottom: 2.5rem;
+}
+
+.imagem-capa-detalhe {
+   width: 100%;
+   max-height: 480px;
+   object-fit: cover;
+   border-radius: 8px;
+   border: 1px solid var(--cor-borda);
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.corpo-noticia {
+   background-color: var(--cor-fundo-cartao);
+   border: 1px solid var(--cor-borda);
+   border-radius: 8px;
+   padding: 2.5rem;
+   margin-bottom: 4rem;
+}
+
+.paragrafo-noticia {
+   font-size: 1.1rem;
+   line-height: 1.8;
+   color: var(--cor-texto);
+   margin-bottom: 1.5rem;
+}
+
+.paragrafo-noticia:last-child {
+   margin-bottom: 0;
+}
+
+.secao-recomendacoes {
+   margin-top: 3rem;
+   border-top: 2px dashed var(--cor-borda);
+   padding-top: 3rem;
+}
+
+.titulo-recomendacoes {
+   font-size: 1.75rem;
+   color: var(--cor-roxo);
+   margin-bottom: 2rem;
+}
+
+.grade-recomendacoes {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 1.5rem;
+}
+
+.cartao-recomendado {
+   padding: 1.5rem;
+}
+
+.botao-ler-mais {
+   margin-top: auto;
+   text-align: center;
+   align-self: flex-start;
+   font-size: 0.9rem;
+   padding: 0.5rem 1rem;
+}
+
+/* Responsividade simples para celular na página da notícia */
+@media (max-width: 768px) {
+   .titulo-noticia-detalhe {
+      font-size: 1.6rem;
+   }
+
+   .corpo-noticia {
+      padding: 1.5rem;
+   }
+
+   .grade-recomendacoes {
+      grid-template-columns: 1fr;
+   }
+}
+
+/* ==========================================================================
+   BLOCO 8: RODAPÉ
+   Estilos do footer e créditos.
+   ========================================================================== */
+
+.rodape {
+   background-color: var(--cor-roxo-cabecalho);
+   border-top: 1px solid rgba(255, 255, 255, 0.15);
+   padding: 2rem 0;
+   margin-top: 3rem;
+   text-align: center;
+}
+
+.rodape-conteudo {
+   font-size: 0.875rem;
+   color: var(--cor-texto-cabecalho);
+}
+
+/* ==========================================================================
+   BLOCO: TRANSIÇÕES E EFEITOS DE HOVER
+   Todos os efeitos visuais e transições agrupados no final do arquivo.
+   ========================================================================== */
+
+body {
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cabecalho {
+   transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.rodape {
+   transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+a {
+   transition: color 0.2s ease;
+}
+
+a:hover {
+   color: var(--cor-roxo);
+}
+
+.link-menu {
+   transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.link-menu:hover {
+   color: #ffffff;
+   opacity: 0.8;
+}
+
+.botao-tema {
+   transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.botao-tema:hover {
+   opacity: 0.85;
+}
+
+.botao-primario {
+   transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.botao-primario:hover {
+   opacity: 0.9;
+   color: #ffffff;
+}
+
+.botao-secundario {
+   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botao-secundario:hover {
+   background-color: var(--cor-azul);
+   color: #ffffff;
+}
+
+.cartao-tema {
+   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartao-tema:hover {
+   transform: translateY(-4px);
+   border-color: var(--cor-azul);
+}
+
+.botao-lateral {
+   transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.botao-lateral:hover {
+   background-color: var(--cor-roxo);
+   color: #ffffff;
+}
+
+.cartao-materia {
+   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cartao-materia:hover {
+   transform: translateY(-4px);
+   border-color: var(--cor-azul);
+}
+
+.link-voltar {
+   transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.link-voltar:hover {
+   opacity: 0.85;
+}

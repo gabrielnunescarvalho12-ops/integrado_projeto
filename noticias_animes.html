@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícia - Supercine</title>
+  <!-- Estilos globais do projeto -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Cabeçalho principal com navegação -->
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+      <a href="index.html#home" class="logo">Supercine</a>
+
+      <nav class="navegacao">
+        <ul class="menu-navegacao">
+          <li><a href="index.html#home" class="link-menu">Home</a></li>
+          <li><a href="animes.html" class="link-menu">Animes</a></li>
+          <li><a href="index.html#sobre" class="link-menu">Sobre</a></li>
+          <li><a href="index.html#contato" class="link-menu">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="bloco-saudacao" id="bloco-saudacao">
+        <span id="texto-saudacao" class="texto-saudacao"></span>
+        <span id="texto-relogio" class="texto-relogio"></span>
+      </div>
+
+      <button id="botao-tema" class="botao-tema" type="button">Modo Escuro</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal da notícia -->
+  <main>
+    <article class="secao-noticia-detalhe">
+      <div class="container">
+
+        <div class="navegacao-voltar">
+          <a href="animes.html" class="link-voltar">&larr; Voltar para as Matérias</a>
+        </div>
+
+        <header class="cabecalho-noticia">
+          <span id="noticia-categoria" class="etiqueta-categoria">Categoria</span>
+          <h1 id="noticia-titulo" class="titulo-noticia-detalhe">Carregando notícia...</h1>
+          <p id="noticia-data" class="data-noticia">Publicado no Portal Supercine</p>
+        </header>
+
+        <div id="noticia-capa-container" class="noticia-capa-bloco">
+          <!-- A imagem de capa da matéria será inserida aqui via JS se houver imagem -->
+        </div>
+
+        <div id="noticia-conteudo" class="corpo-noticia">
+          <!-- Texto completo da matéria inserido via JS -->
+        </div>
+
+        <!-- Seção de Recomendações Aleatórias no Final -->
+        <section class="secao-recomendacoes">
+          <h2 class="titulo-recomendacoes">Você também pode gostar:</h2>
+          <div id="grade-recomendacoes" class="grade-recomendacoes">
+            <!-- Cartões recomendados gerados dinamicamente via JS -->
+          </div>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Rodapé principal com créditos -->
+  <footer class="rodape">
+    <div class="container rodape-conteudo">
+      <p class="rodape-texto">&copy; 2026 Gabriel Nunes Carvalho - Portfólio sobre Cultura Pop.</p>
+    </div>
+  </footer>
+
+  <!-- Script global e script de exibição da notícia -->
+  <script src="script.js"></script>
+  <script src="noticias.js"></script>
+</body>
+
+</html>
